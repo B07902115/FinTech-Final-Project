@@ -18,16 +18,16 @@ class Strategy(): # Strategy no.3: Graville's rules
         self.options = {}
 
         # User defined constants
-        self.buy_ratio = 0.7
+        self.buy_ratio = 0.7                   # The ratio of the balance spent on buying BTC
 
         # user defined class attribute
-        self.last_type = 'sell' # Last action other than waiting
-        self.last_ma_trend = None # Trend of MA at the last period
-        self.close_price_trace = np.array([]) # The array of recent prices
-        self.ma_short = 20 # Range of coverage of the short MA, in periods
-        self.ma_long = 50 # Range of coverage of the long MA, in periods
-        self.last_buy = -1 # Last buy price (-1 if waiting to buy)
-        self.last_s_ma = None # Value of the short MA at the last period
+        self.last_type = 'sell'                # Last action other than waiting
+        self.last_ma_trend = None              # Trend of MA at the last period
+        self.close_price_trace = np.array([])  # The array of recent prices
+        self.ma_short = 20                     # Range of coverage of the short MA, in periods
+        self.ma_long = 50                      # Range of coverage of the long MA, in periods
+        self.last_buy = -1                     # Last buy price (-1 if waiting to buy)
+        self.last_s_ma = None                  # Value of the short MA at the last period
 
         # Representing the trends
         self.UP = 1

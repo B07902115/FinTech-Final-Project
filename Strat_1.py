@@ -17,12 +17,17 @@ class Strategy():
         self.period = 20*60
         self.options = {}
 
+        # User defined constants
+        self.buy_ratio = 0.7                   # The ratio of the balance spent on buying BTC
+
         # user defined class attribute
-        self.last_type = 'sell'
-        self.last_cross_status = None
-        self.close_price_trace = np.array([])
-        self.ma_long = 300
-        self.ma_short = 50
+        self.last_type = 'sell'                # Last action other than waiting
+        self.last_cross_status = None          # Cross status of the last period
+        self.close_price_trace = np.array([])  # The array of recent prices
+        self.ma_short = 50                     # Range of coverage of the short MA, in periods
+        self.ma_long = 300                     # Range of coverage of the long MA, in periods
+
+        # Representing the trends
         self.UP = 1
         self.DOWN = 2
         Log("peroid: %d; long: %d; short: %d" %(self.period, self.ma_long, self.ma_short))
@@ -74,7 +79,7 @@ class Strategy():
             return [
                 {
                     'exchange': exchange,
-                    'amount': self['assets'][exchange]['USDT'] * 0.7 / close_price,
+                    'amount': self['assets'][exchange]['USDT'] * self.buy_ratio / close_price,
                     'price': -1,
                     'type': 'MARKET',
                     'pair': pair,
